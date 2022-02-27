@@ -1,0 +1,41 @@
+body {
+    background-image: url('./images/home.jpg');
+    font-family:'Lobster', cursive; 
+}
+
+div  {
+    margin-top: 200px;
+    text-align: center;
+}
+
+h1{
+    font-size: 90px;
+    color: #b30000;
+    text-shadow: 10px 10px 50px #ffffff;
+}
+
+a{
+    text-decoration: none;
+    margin-top:150px;
+    text-align:center;
+    font-size: 55px;
+    color: #ff6666;
+    background-color: hsla(0,100%, 90%, 70%);
+    border-radius: 25px;
+    padding:10px;
+}
+
+a:hover{
+    color:#b30000;
+    background-color: #ff6666;
+    font-size: 60px;
+}
+
+a:active{
+    color:#990000;
+    font-size: 60px;
+}
+
+
+
+
