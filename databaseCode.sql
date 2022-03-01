@@ -41,7 +41,7 @@ insert into puzzles values (3002, 'Wooden rack', 24, 45);
 insert into puzzles values (3003, 'Klenba', 36, 45);
 insert into puzzles values (3004, 'Flower', 37, 45);
 insert into puzzles values (3005, 'The Simpsons', 40 ,45);
--- drop table if exists toys;
+drop table if exists toys;
 create table toys (
 	id int,
 	category varchar(50),
@@ -67,3 +67,9 @@ insert into toys values (3002, 'puzzle', 'Wooden rack', 24, 45);
 insert into toys values (3003, 'puzzle', 'Klenba', 36, 45);
 insert into toys values (3004, 'puzzle', 'Flower', 37, 45);
 insert into toys values (3005, 'puzzle', 'The Simpsons', 40 ,45);
+drop table if exists order_records;
+create table order_records(
+	id int,
+	qty_ordered int,
+	primary key (id)
+);

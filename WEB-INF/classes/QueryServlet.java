@@ -41,6 +41,10 @@ public class QueryServlet extends HttpServlet {
          //     + " and qty > 0 order by price desc";
 
          String[] categories = request.getParameterValues("category");
+         if (categories == null) {
+            out.println("<h2>No category selected. Please go back to select author(s)</h2><body></html>");
+            return; // Exit doGet()
+         }
          String sqlStr = "SELECT * FROM toys WHERE category IN (";
          for (int i = 0; i < categories.length; ++i) {
             if (i < categories.length - 1) {
@@ -55,7 +59,9 @@ public class QueryServlet extends HttpServlet {
          //out.println("<p>Your SQL statement is: " + sqlStr + "</p>"); // Echo for debugging
          ResultSet rset = stmt.executeQuery(sqlStr);  // Send the query to the server
 
-         // Step 4: Process the query result set
+         // Step 4: Process the query result
+         // Print the <form> start tag
+         out.println("<form method='get' action='order'>");
          out.println("<table><tr><th></th><th>CATEGORY</th><th>NAME</th><th>PRICE</th></tr>");
          int count = 0;
          while(rset.next()) {

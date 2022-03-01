@@ -1,4 +1,4 @@
-// To save as "ebookshop\WEB-INF\classes\ EshopOrderServlet.java".
+// To save as "ebookshop\WEB-INF\classes\ OrderServlet.java".
 import java.io.*;
 import java.sql.*;
 import jakarta.servlet.*;            // Tomcat 10
@@ -9,7 +9,7 @@ import jakarta.servlet.annotation.*;
 //import javax.servlet.annotation.*;
 
 @WebServlet("/order")   // Configure the request URL for this servlet (Tomcat 7/Servlet 3.0 upwards)
-public class EshopOrderServlet extends HttpServlet {
+public class OrderServlet extends HttpServlet {
 
    // The doGet() runs once per HTTP GET request to this servlet.
    @Override
@@ -27,7 +27,7 @@ public class EshopOrderServlet extends HttpServlet {
       try (
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
-               "jdbc:mysql://localhost:3306/ebookshop?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
+               "jdbc:mysql://localhost:3306/etoyshop?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
                "myuser", "xxxx");   // For MySQL
                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
@@ -37,6 +37,7 @@ public class EshopOrderServlet extends HttpServlet {
          // Step 3 & 4: Execute a SQL SELECT query and Process the query result
          // Retrieve the books' id. Can order more than one books.
          String[] ids = request.getParameterValues("id");
+         // String[] categories = request.getParameterValues("category");
          if (ids != null) {
             String sqlStr;
             int count;
@@ -44,7 +45,7 @@ public class EshopOrderServlet extends HttpServlet {
             // Process each of the books
             for (int i = 0; i < ids.length; ++i) {
                // Update the qty of the table books
-               sqlStr = "UPDATE books SET qty = qty - 1 WHERE id = " + ids[i];
+               sqlStr = "UPDATE toys SET qty = qty - 1 WHERE id = " + ids[i];
                out.println("<p>" + sqlStr + "</p>");  // for debugging
                count = stmt.executeUpdate(sqlStr);
                out.println("<p>" + count + " record updated.</p>");
