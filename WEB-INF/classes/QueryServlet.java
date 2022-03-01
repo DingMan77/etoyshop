@@ -21,6 +21,7 @@ public class QueryServlet extends HttpServlet {
       PrintWriter out = response.getWriter();
       // Print an HTML page as the output of the query
       out.println("<html>");
+      out.println("<style>table, th, td {border:1px solid black;}</style>");
       out.println("<head><title>Query Response</title></head>");
       out.println("<body>");
 
@@ -28,7 +29,7 @@ public class QueryServlet extends HttpServlet {
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/etoyshop?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-               "myuser", "Chdy727300");   // For MySQL
+               "myuser", "xxxx");   // For MySQL
                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
          // Step 2: Allocate a 'Statement' object in the Connection
@@ -55,14 +56,28 @@ public class QueryServlet extends HttpServlet {
          ResultSet rset = stmt.executeQuery(sqlStr);  // Send the query to the server
 
          // Step 4: Process the query result set
+         out.println("<table><tr><th></th><th>CATEGORY</th><th>NAME</th><th>PRICE</th></tr>");
          int count = 0;
          while(rset.next()) {
-            // Print a paragraph <p>...</p> for each record
-            out.println("<p>" + rset.getString("category") + "," + rset.getString("name")
-                  + ", $" + rset.getDouble("price") + "</p>");
+            // Print a row <td>...</td> for each record
+            out.println("<tr><td><input type='checkbox' name='id' value=" + "'" + rset.getString("id") + "' /></td>" 
+                    + "<td>" + rset.getString("category") + "</td>"
+                    + "<td>" + rset.getString("name") + "</td>" 
+                    + "<td>$" + rset.getString("price") + "</td></tr>");
             count++;
          }
          out.println("<p>==== " + count + " records found =====</p>");
+
+         out.println("</table>");
+
+         out.println("<p>Enter your Name: <input type='text' name='cust_name' /></p>");
+         out.println("<p>Enter your Email: <input type='text' name='cust_email' /></p>");
+         out.println("<p>Enter your Phone Number: <input type='text' name='cust_phone' /></p>");
+ 
+         // Print the submit button and </form> end-tag
+         out.println("<p><input type='submit' value='ORDER' />");
+         out.println("</form>");
+
       } catch(Exception ex) {
          out.println("<p>Error: " + ex.getMessage() + "</p>");
          out.println("<p>Check Tomcat console for details.</p>");
