@@ -3,7 +3,7 @@ body {
     font-family:'Lobster', cursive; 
 }
 
-div  {
+div {
     margin-top: 200px;
     text-align: center;
 }
@@ -11,7 +11,7 @@ div  {
 h1{
     font-size: 90px;
     color: #b30000;
-    text-shadow: 10px 10px 50px #ffffff;
+    text-shadow: 20px 10px 5px #dea6b2;
 }
 
 a{
@@ -23,7 +23,9 @@ a{
     background-color: hsla(0,100%, 90%, 70%);
     border-radius: 25px;
     padding:10px;
+    text-shadow: 5px 5px 5px #dea6b2;
 }
+
 
 a:hover{
     color:#b30000;
