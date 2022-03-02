@@ -28,7 +28,7 @@ public class OrderServlet extends HttpServlet {
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/etoyshop?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-               "myuser", "xxxx");   // For MySQL
+               "myuser", "Chdy727300");   // For MySQL
                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
          // Step 2: Allocate a 'Statement' object in the Connection
@@ -37,31 +37,50 @@ public class OrderServlet extends HttpServlet {
          // Step 3 & 4: Execute a SQL SELECT query and Process the query result
          // Retrieve the books' id. Can order more than one books.
          String[] ids = request.getParameterValues("id");
+         String cust_name = request.getParameter("cust_name");
+         String cust_email = request.getParameter("cust_email");
+         String cust_phone = request.getParameter("cust_phone");
+         //String[] names = request.getParameterValues("name");
          // String[] categories = request.getParameterValues("category");
          if (ids != null) {
             String sqlStr;
             int count;
- 
+            int totalPrice = 0;
             // Process each of the books
             for (int i = 0; i < ids.length; ++i) {
+
+               sqlStr = "SELECT price from toys WHERE id = "+ ids[i];
+               //out.println("<p>" + sqlStr + "</p>");  // for debugging
+
+               ResultSet rset = stmt.executeQuery(sqlStr);
+               if(rset.next()){
+                  totalPrice += rset.getInt("price");
+               }
+               
                // Update the qty of the table books
                sqlStr = "UPDATE toys SET qty = qty - 1 WHERE id = " + ids[i];
-               out.println("<p>" + sqlStr + "</p>");  // for debugging
+               //out.println("<p>" + sqlStr + "</p>");  // for debugging
                count = stmt.executeUpdate(sqlStr);
-               out.println("<p>" + count + " record updated.</p>");
- 
+               //out.println("<p>" + count + " record updated.</p>");
+               
                // Create a transaction record
                sqlStr = "INSERT INTO order_records (id, qty_ordered) VALUES ("
                      + ids[i] + ", 1)";
-               out.println("<p>" + sqlStr + "</p>");  // for debugging
+               //out.println("<p>" + sqlStr + "</p>");  // for debugging
                count = stmt.executeUpdate(sqlStr);
-               out.println("<p>" + count + " record inserted.</p>");
-               out.println("<h3>Your order for book id=" + ids[i]
-                     + " has been confirmed.</h3>");
+               //out.println("<p>" + count + " record inserted.</p>");
+               out.println("<h3>Your order for toy id = " + ids[i] + " has been confirmed.</h3>");
+
+               sqlStr = "INSERT INTO customers (id, cust_name, cust_email, cust_phone) VALUES ("
+                     + ids[i] + ", '" + cust_name + "', '" + 
+                     cust_email + "', '" + cust_phone + "')";
+               //out.println("<p>" + sqlStr + "</p>");  // for debugging
+               count = stmt.executeUpdate(sqlStr);
             }
+            out.println("<h3>The total price is $"+ totalPrice);
             out.println("<h3>Thank you.<h3>");
-         } else { // No book selected
-            out.println("<h3>Please go back and select a book...</h3>");
+         }else{ // No book selected
+            out.println("<h3>Please go back and select a toy...</h3>");
          }
         }  
         catch(Exception ex) {

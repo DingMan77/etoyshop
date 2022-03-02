@@ -20,8 +20,14 @@ public class QueryServlet extends HttpServlet {
       // Get a output writer to write the response message into the network socket
       PrintWriter out = response.getWriter();
       // Print an HTML page as the output of the query
+      out.println("<!DOCTYPE html>")
       out.println("<html>");
-      out.println("<style>table, th, td {border:1px solid black;}</style>");
+      out.println("<style>");
+      out.println("table, th, td {border:1px solid black;}");
+      out.println("body {");
+      out.println("background-color: rgb(227, 138, 171);");
+      out.println("}");
+      out.println("</style>");
       out.println("<head><title>Query Response</title></head>");
       out.println("<body>");
 
@@ -29,7 +35,7 @@ public class QueryServlet extends HttpServlet {
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/etoyshop?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-               "myuser", "xxxx");   // For MySQL
+               "myuser", "Chdy727300");   // For MySQL
                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
          // Step 2: Allocate a 'Statement' object in the Connection

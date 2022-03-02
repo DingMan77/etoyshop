@@ -1,0 +1,129 @@
+body {
+    background-image: url('./images/home.jpg');
+    font-family:'Lobster', cursive; 
+}
+
+h2{
+    font-size: 65px;
+    background: -webkit-linear-gradient(rgb(251, 203, 203), rgb(67, 4, 112));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align:center;
+    margin-top: 45px;
+}
+
+h3 {
+    font-size: 40px;
+    color:rgba(81, 15, 142, 0.973);
+    text-align:center;
+    margin-top: 20px;
+    text-shadow: 20px 10px 3px #e6c4f3;
+    font-weight: lighter;
+    margin-bottom: 35px;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-top: 100px;
+    margin-bottom:10px;
+    margin-left: 10%;
+    cursor: pointer;
+    font-size: 40px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color:rgba(108, 68, 145, 0.973);
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    background-color: rgb(251, 236, 244);
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: rgb(244, 127, 176);
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #f035b2;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  img {
+      margin-top: 15px;
+      max-width: 50%;
+      max-height:50%;
+      min-width: 50%;
+      min-height:50%;
+      border-radius: 50%;
+  }
+
+  div{
+      position: relative;
+      display:inline-flex;
+      justify-content: center;
+  }
+
+  .submit{
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  input[type=submit] {
+    background-color: #d77495;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    font-size:20px;
+    font-weight: bold;
+    line-height: 1.4;
+    padding: 10px;
+    width: 180px;
+    font-family:'Lobster', cursive; 
+  }

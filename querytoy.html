@@ -2,15 +2,40 @@
 <html>
 	<head>
 		<title>A toy shop</title>
+		<link rel="stylesheet" href = "references/query.css">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<h2>Welcome to the toyshop!</h2>
+		<h2>Hi! Nice to see you here!</h2>
 		<form method="get" action="query">
 			<h3>Choose the categories of the toy that you are interested in:</h3>
-			<input type="checkbox" name="category" value="lego"/> Lego
-			<input type="checkbox" name="category" value="plushtoy"/>Plushtoys
-			<input type="checkbox" name="category" value="puzzle"/>Puzzles
-			<input type="submit" value="Search" />
+			<div>
+				<label class="container">Lego
+					<input type="checkbox" name="category" value="lego"/>
+					<span class="checkmark"></span>
+					<br>
+					<img src="./references/images/lego.jpg" />
+				</label >
+				<label class="container">Plushtoys
+					<input type="checkbox" name="category" value="plushtoy"/>
+					<span class="checkmark"></span>
+					<br>
+					<img src="./references/images/plushtoy.jpg" />
+				</label>
+				<label class="container">Puzzles
+					<input type="checkbox" name="category" value="puzzle"/>
+					<span class="checkmark"></span>
+					<br>
+					<img src="./references/images/puzzle.jpg" />
+				</label>
+			</div>
+			<br/>
+			
+			<label class="submit">
+				<input type="submit" value="Search" />
+			</label>
+				
+			
 		</form>
 	</body>
 </html>

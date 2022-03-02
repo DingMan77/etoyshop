@@ -70,6 +70,25 @@ insert into toys values (3005, 'puzzle', 'The Simpsons', 40 ,45);
 drop table if exists order_records;
 create table order_records(
 	id int,
-	qty_ordered int,
-	primary key (id)
+	qty_ordered int
 );
+
+
+drop table if exists customers;
+create table customers(
+	id int,
+	cust_name varchar(50),
+	cust_email varchar(50),
+	cust_phone varchar(50)
+);
+
+
+
+
+
+
+
+
+
+
+
