@@ -20,15 +20,21 @@ public class QueryServlet extends HttpServlet {
       // Get a output writer to write the response message into the network socket
       PrintWriter out = response.getWriter();
       // Print an HTML page as the output of the query
-      out.println("<!DOCTYPE html>")
+      out.println("<!DOCTYPE html>");
       out.println("<html>");
       out.println("<style>");
-      out.println("table, th, td {border:1px solid black;}");
-      out.println("body {");
-      out.println("background-color: rgb(227, 138, 171);");
-      out.println("}");
+      out.println("table, th, td {border: 2px solid #cf2164; margin-left: auto; margin-right: auto; width: 800px; color: #590f2c}");
+      out.println("body {background-color: #f9e4ff; font-family: Comic Sans MS;}");
+      out.println("h2 {text-align: center; background: -webkit-linear-gradient(rgb(251, 203, 203), rgb(67, 4, 112)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}");
+      out.println("h3 {text-align: center; color: #cf2164;  margin-top: 50px; margin-bottom:10px; font-size: 55px; text-shadow: 20px 10px 3px #e6c4f3;}");
+      out.println("p {font-size: 25px; color: #a6196e; text-align: center;}");
+      out.println("h4 {margin-left: auto; margin-right: auto; width: 800px; color: #a6196e;}");
+      out.println("input[type=submit] {background-color: #cf2164; border: 0; border-radius: 5px; cursor: pointer; color: #fff; font-size:20px; font-weight: bold; line-height: 1.4;padding: 10px; width: 180px; }");
       out.println("</style>");
       out.println("<head><title>Query Response</title></head>");
+      //out.println("<link rel=\"stylesheet\" href=\"style1.css\">");
+      //out.println("<link href=\"https://fonts.googleapis.com/css2?family=Lobster&display=swap\" rel=\"stylesheet\">");
+      //out.println("</head>");
       out.println("<body>");
 
       try (
@@ -82,9 +88,9 @@ public class QueryServlet extends HttpServlet {
 
          out.println("</table>");
 
-         out.println("<p>Enter your Name: <input type='text' name='cust_name' /></p>");
-         out.println("<p>Enter your Email: <input type='text' name='cust_email' /></p>");
-         out.println("<p>Enter your Phone Number: <input type='text' name='cust_phone' /></p>");
+         out.println("<h4>Enter your Name: <input type='text' name='cust_name' /></h4>");
+         out.println("<h4>Enter your Email: <input type='text' name='cust_email' /></h4>");
+         out.println("<h4>Enter your Phone Number: <input type='text' name='cust_phone' /></h4>");
  
          // Print the submit button and </form> end-tag
          out.println("<p><input type='submit' value='ORDER' />");

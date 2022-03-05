@@ -1,0 +1,8 @@
+table, th, td {
+	border: 1px solid rgb(231, 102, 147);
+}
+
+body{
+	background-image: url(/references/images/home.jpg);
+	font-family:'Lobster', cursive; 
+}

@@ -20,7 +20,15 @@ public class OrderServlet extends HttpServlet {
       // Get a output writer to write the response message into the network socket
       PrintWriter out = response.getWriter();
       // Print an HTML page as the output of the query
+      out.println("<!DOCTYPE html>");
       out.println("<html>");
+      out.println("<style>");
+      out.println("body {background-color: #ffd7e1; font-family: Comic Sans MS;}");
+      out.println("h2 {text-align: center; background: -webkit-linear-gradient(rgb(251, 203, 203), rgb(67, 4, 112)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}");
+      out.println("h3 {text-align: center; color: #d35a7f;  margin-left: auto; margin-right: auto; width: 1000px;font-size: 35px;}");
+      out.println("p {font-size: 25px; color: #d35a7f; text-align: center;}");
+      out.println("h4 {margin-left: auto; margin-right: auto; width: 1300px;}");
+      out.println("</style>");
       out.println("<head><title>Query Response</title></head>");
       out.println("<body>");
 
