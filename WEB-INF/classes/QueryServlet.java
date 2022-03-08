@@ -41,7 +41,7 @@ public class QueryServlet extends HttpServlet {
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/etoyshop?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-               "myuser", "Chdy727300");   // For MySQL
+               "myuser", "xxxx");   // For MySQL
                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
          // Step 2: Allocate a 'Statement' object in the Connection
@@ -54,7 +54,7 @@ public class QueryServlet extends HttpServlet {
 
          String[] categories = request.getParameterValues("category");
          if (categories == null) {
-            out.println("<h2>No category selected. Please go back to select author(s)</h2><body></html>");
+            out.println("<h2>No category selected. Please go back to select</h2><body></html>");
             return; // Exit doGet()
          }
          String sqlStr = "SELECT * FROM toys WHERE category IN (";
@@ -78,11 +78,20 @@ public class QueryServlet extends HttpServlet {
          int count = 0;
          while(rset.next()) {
             // Print a row <td>...</td> for each record
-            out.println("<tr><td><input type='checkbox' name='id' value=" + "'" + rset.getString("id") + "' /></td>" 
+            if (rset.getString("qty") == "0") {
+               out.println("<tr><td><input type='checkbox' name='id' value=" + "'" + rset.getString("id") + "' disabled>(out of stock)</td>" 
                     + "<td>" + rset.getString("category") + "</td>"
                     + "<td>" + rset.getString("name") + "</td>" 
                     + "<td>$" + rset.getString("price") + "</td></tr>");
-            count++;
+               count++;
+            }
+            else {
+               out.println("<tr><td><input type='checkbox' name='id' value=" + "'" + rset.getString("id") + "'></td>" 
+                    + "<td>" + rset.getString("category") + "</td>"
+                    + "<td>" + rset.getString("name") + "</td>" 
+                    + "<td>$" + rset.getString("price") + "</td></tr>");
+               count++;
+            }
          }
          out.println("<p>==== " + count + " records found =====</p>");
 

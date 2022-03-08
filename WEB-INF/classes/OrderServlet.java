@@ -36,7 +36,7 @@ public class OrderServlet extends HttpServlet {
          // Step 1: Allocate a database 'Connection' object
          Connection conn = DriverManager.getConnection(
                "jdbc:mysql://localhost:3306/etoyshop?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC",
-               "myuser", "Chdy727300");   // For MySQL
+               "myuser", "xxxx");   // For MySQL
                // The format is: "jdbc:mysql://hostname:port/databaseName", "username", "password"
 
          // Step 2: Allocate a 'Statement' object in the Connection

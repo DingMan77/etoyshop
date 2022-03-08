@@ -8,10 +8,10 @@ create table lego (
 	qty int,
 	primary key (id)
 );
-insert into lego values (1001, 'bowser''s castle boss battle expansion set', 65, 40);
+insert into lego values (1001, 'bowser''s castle boss battle expansion set', 65, 0);
 insert into lego values (1002, 'Mario''s house & Yoshi expansion set', 65, 40);
 insert into lego values (1003, 'King Boo and the Haunted Yard Expansion set', 70,40);
-insert into lego values (1004, 'CHaracter packs', 45, 40);
+insert into lego values (1004, 'Character packs', 45, 40);
 insert into lego values (1005, 'Toad''s Treasure Hunt Expansion Set', 65, 40);
 insert into lego values (1006, 'Guarded Fortress Expansion set',65, 40);
 drop table if exists plushtoys;
@@ -50,10 +50,10 @@ create table toys (
 	qty int,
 	primary key (id)
 );
-insert into toys values (1001, 'lego', 'bowser''s castle boss battle expansion set', 65, 40);
+insert into toys values (1001, 'lego', 'bowser''s castle boss battle expansion set', 65, 0); --set qty to 0 for testing. It shouldn't appear in search result. 
 insert into toys values (1002, 'lego', 'Mario''s house & Yoshi expansion set', 65, 40);
 insert into toys values (1003, 'lego', 'King Boo and the Haunted Yard Expansion set', 70,40);
-insert into toys values (1004, 'lego', 'CHaracter packs', 45, 40);
+insert into toys values (1004, 'lego', 'Character packs', 45, 40);
 insert into toys values (1005, 'lego', 'Toad''s Treasure Hunt Expansion Set', 65, 40);
 insert into toys values (1006, 'lego', 'Guarded Fortress Expansion set',65, 40);
 insert into toys values (2001, 'plushtoy', 'Bobbleton pig', 39, 30);
@@ -72,8 +72,6 @@ create table order_records(
 	id int,
 	qty_ordered int
 );
-
-
 drop table if exists customers;
 create table customers(
 	id int,
